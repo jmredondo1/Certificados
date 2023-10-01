@@ -1,0 +1,17 @@
+private void button3_Click(object sender, EventArgs e)
+        {
+
+            // FIRMA SELECCIONANDO EL CERTIFICADO
+            //ProcessStartInfo startInfo = new ProcessStartInfo("AutofirmaCommandLine.exe");
+            //startInfo.CreateNoWindow = true;
+            //startInfo.Arguments = "sign -certgui -i c:/temp/prueba.pdf -o c:/temp/prueba_signed.pdf";
+            //Process.Start(startInfo);
+
+            // FUNCIONA CON ESTO ARRANCADO AUTOFIRMA
+            //ProcessStartInfo startInfo = new ProcessStartInfo("AutofirmaCommandLine.exe");
+            //startInfo.CreateNoWindow = true;
+            //Process.Start(startInfo);
+
+            //TAMBIÉN FUNCIONA SOLO CON ESTO
+            //Process.Start("AutofirmaCommandLine.exe", "sign -certgui -i c:\\temp\\prueba.pdf -o c:\\temp\\prueba_signed.pdf");
+        }
