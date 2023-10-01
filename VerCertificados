@@ -1,0 +1,52 @@
+private void button2_Click(object sender, EventArgs e)
+        {
+
+            // almacén personal
+            X509Store store = new X509Store(StoreName.My, StoreLocation.CurrentUser);
+            store.Open(OpenFlags.ReadOnly);
+
+            //X509Extension extension
+            //X509EnhancedKeyUsageExtension ext = (X509EnhancedKeyUsageExtension)extension;
+            //OidCollection oids = ext.EnhancedKeyUsages;
+
+
+
+            X509Certificate2Collection storecollection = (X509Certificate2Collection)store.Certificates;
+            foreach (X509Certificate2 x509 in storecollection)
+            {
+                if (x509.HasPrivateKey)
+                    listView1.Items.Add(new ListViewItem(new string[] { x509.Subject, x509.Issuer, "" }));
+                //foreach (X509Extension extension in x509.Extensions) {
+                //    X509EnhancedKeyUsageExtension ext = (X509EnhancedKeyUsageExtension)extension;
+                //    Console.WriteLine(extension.ToString());
+                //} 
+            }
+
+            ////Remove a certificate.
+            //store.Remove(certificate1);
+            //X509Certificate2Collection storecollection2 = (X509Certificate2Collection)store.Certificates;
+            //Console.WriteLine("{1}Store name: {0}", store.Name, Environment.NewLine);
+            //foreach (X509Certificate2 x509 in storecollection2)
+            //{
+            //    Console.WriteLine("certificate name: {0}", x509.Subject);
+            //}
+
+            ////Remove a range of certificates.
+            //store.RemoveRange(collection);
+            //X509Certificate2Collection storecollection3 = (X509Certificate2Collection)store.Certificates;
+            //Console.WriteLine("{1}Store name: {0}", store.Name, Environment.NewLine);
+            //if (storecollection3.Count == 0)
+            //{
+            //    Console.WriteLine("Store contains no certificates.");
+            //}
+            //else
+            //{
+            //    foreach (X509Certificate2 x509 in storecollection3)
+            //    {
+            //        Console.WriteLine("certificate name: {0}", x509.Subject);
+            //}
+            //}
+
+            ////Close the store.
+            store.Close();
+        }
