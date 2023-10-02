@@ -13,5 +13,7 @@ private void button3_Click(object sender, EventArgs e)
             //Process.Start(startInfo);
 
             //TAMBIÉN FUNCIONA SOLO CON ESTO
-            //Process.Start("AutofirmaCommandLine.exe", "sign -certgui -i c:\\temp\\prueba.pdf -o c:\\temp\\prueba_signed.pdf");
+            ProcessStartInfo startInfo = new ProcessStartInfo("AutofirmaCommandLine.exe", "sign -certgui -i c:\\temp\\prueba.pdf -o c:\\temp\\prueba_signed.pdf");
+            startInfo.CreateNoWindow = true;
+            Process.Start(startInfo);
         }
