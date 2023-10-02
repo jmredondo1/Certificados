@@ -8,18 +8,27 @@ private void button2_Click(object sender, EventArgs e)
             //X509Extension extension
             //X509EnhancedKeyUsageExtension ext = (X509EnhancedKeyUsageExtension)extension;
             //OidCollection oids = ext.EnhancedKeyUsages;
-
+            // Lista de certificados válidos que contengan las cadenas siguientes
+            List<string> certValido = new List<string>();
+            certValido.Add("DNIe");
+            certValido.Add("FNMT");
 
 
             X509Certificate2Collection storecollection = (X509Certificate2Collection)store.Certificates;
             foreach (X509Certificate2 x509 in storecollection)
             {
-                if (x509.HasPrivateKey)
+                if (x509.HasPrivateKey && ContainsAny(x509.Issuer, certValido)) //Llamo a una funciónque contengalas cadenasválidas
                     listView1.Items.Add(new ListViewItem(new string[] { x509.Subject, x509.Issuer, "" }));
                 //foreach (X509Extension extension in x509.Extensions) {
                 //    X509EnhancedKeyUsageExtension ext = (X509EnhancedKeyUsageExtension)extension;
                 //    Console.WriteLine(extension.ToString());
                 //} 
+            }
+            public static bool ContainsAny(string s, List<string> substrings)
+            {
+                if (string.IsNullOrEmpty(s) || substrings == null)
+                return false;
+                return substrings.Any(substring => s.Contains(substring, StringComparison.CurrentCultureIgnoreCase));
             }
 
             ////Remove a certificate.
